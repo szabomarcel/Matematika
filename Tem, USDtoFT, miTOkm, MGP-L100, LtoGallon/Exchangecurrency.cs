@@ -244,6 +244,12 @@ namespace Tem__USDtoFT__miTOkm__MGP_L100__LtoGallon
                     return;
                 }
 
+                // Ha a pénznem ugyanaz, mint a cél pénznem (pl. USD -> USD, EUR -> EUR), ne végezzen átváltást
+                if (fromCurrency == "USD")
+                {
+                    return; // Ha USD-ról USD-ra vált, nem csinálunk semmit
+                }
+
                 // Árfolyam ellenőrzés és váltás
                 double fromRate = exchangeRates[fromCurrency];
                 double convertedAmount = amount / fromRate;
@@ -287,7 +293,7 @@ namespace Tem__USDtoFT__miTOkm__MGP_L100__LtoGallon
                 // Pénznem beolvasása
                 string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
 
-                // Ellenőrizzük, hogy a pénznem létezik-e
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
                 if (!exchangeRates.ContainsKey(fromCurrency))
                 {
                     MessageBox.Show("A kiválasztott pénznem nem támogatott.");
@@ -296,13 +302,11 @@ namespace Tem__USDtoFT__miTOkm__MGP_L100__LtoGallon
 
                 // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
                 if (fromCurrency == "EUR")
-                {
-                    listBoxResults.Items.Add($"{amount} EUR = {amount} EUR");
-                    lastAmount = amount; // Frissítjük az utolsó összeg értékét
+                {                    
                     return;
                 }
 
-                // EUR-ra váltás (USD közvetítés nélkül)
+                // EUR-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
                 double fromRate = exchangeRates[fromCurrency];
                 double eurRate = exchangeRates["EUR"];
                 double convertedAmount = (amount / fromRate) * eurRate;
