@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matematikaiegyenlet", "Matematikaiegyenlet\Matematikaiegyenlet.csproj", "{09E352AE-CEA9-4979-B510-303938A2EFF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tem, USDtoFT, miTOkm, MGP-L100, LtoGallon", "Tem, USDtoFT, miTOkm, MGP-L100, LtoGallon\Tem, USDtoFT, miTOkm, MGP-L100, LtoGallon.csproj", "{BFC6E18C-E45A-4D82-A585-B2AC6FEB4D18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{09E352AE-CEA9-4979-B510-303938A2EFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E352AE-CEA9-4979-B510-303938A2EFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E352AE-CEA9-4979-B510-303938A2EFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC6E18C-E45A-4D82-A585-B2AC6FEB4D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC6E18C-E45A-4D82-A585-B2AC6FEB4D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC6E18C-E45A-4D82-A585-B2AC6FEB4D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC6E18C-E45A-4D82-A585-B2AC6FEB4D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
