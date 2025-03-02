@@ -69,6 +69,7 @@
             this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.listBoxResults = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxNumber1 = new System.Windows.Forms.TextBox();
             this.listBoxResults1 = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBoxGallon2 = new System.Windows.Forms.TextBox();
@@ -92,7 +93,6 @@
             this.btnMGP = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnReset2 = new System.Windows.Forms.Button();
-            this.textBoxNumber1 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -366,6 +366,7 @@
             this.btnRo.TabIndex = 14;
             this.btnRo.Text = "RO";
             this.btnRo.UseVisualStyleBackColor = false;
+            this.btnRo.Click += new System.EventHandler(this.btnRo_Click);
             // 
             // btnHuf
             // 
@@ -378,6 +379,7 @@
             this.btnHuf.TabIndex = 15;
             this.btnHuf.Text = "HUF";
             this.btnHuf.UseVisualStyleBackColor = false;
+            this.btnHuf.Click += new System.EventHandler(this.btnHuf_Click);
             // 
             // btnTürkey
             // 
@@ -390,6 +392,7 @@
             this.btnTürkey.TabIndex = 16;
             this.btnTürkey.Text = "TÜRKEY";
             this.btnTürkey.UseVisualStyleBackColor = false;
+            this.btnTürkey.Click += new System.EventHandler(this.btnTürkey_Click);
             // 
             // btnGreek
             // 
@@ -402,6 +405,7 @@
             this.btnGreek.TabIndex = 17;
             this.btnGreek.Text = "GREEK";
             this.btnGreek.UseVisualStyleBackColor = false;
+            this.btnGreek.Click += new System.EventHandler(this.btnGreek_Click);
             // 
             // btnRus
             // 
@@ -414,6 +418,7 @@
             this.btnRus.TabIndex = 18;
             this.btnRus.Text = "RUS";
             this.btnRus.UseVisualStyleBackColor = false;
+            this.btnRus.Click += new System.EventHandler(this.btnRus_Click);
             // 
             // btnJapan
             // 
@@ -426,6 +431,7 @@
             this.btnJapan.TabIndex = 19;
             this.btnJapan.Text = "JAPAN";
             this.btnJapan.UseVisualStyleBackColor = false;
+            this.btnJapan.Click += new System.EventHandler(this.btnJapan_Click);
             // 
             // btnChina
             // 
@@ -438,6 +444,7 @@
             this.btnChina.TabIndex = 21;
             this.btnChina.Text = "CHINA";
             this.btnChina.UseVisualStyleBackColor = false;
+            this.btnChina.Click += new System.EventHandler(this.btnChina_Click);
             // 
             // btnSlovak
             // 
@@ -450,6 +457,7 @@
             this.btnSlovak.TabIndex = 22;
             this.btnSlovak.Text = "SLOVAK";
             this.btnSlovak.UseVisualStyleBackColor = false;
+            this.btnSlovak.Click += new System.EventHandler(this.btnSlovak_Click);
             // 
             // btnCzech
             // 
@@ -462,6 +470,7 @@
             this.btnCzech.TabIndex = 23;
             this.btnCzech.Text = "CZECHO";
             this.btnCzech.UseVisualStyleBackColor = false;
+            this.btnCzech.Click += new System.EventHandler(this.btnCzech_Click);
             // 
             // btnGerman
             // 
@@ -474,6 +483,7 @@
             this.btnGerman.TabIndex = 24;
             this.btnGerman.Text = "GERMAN";
             this.btnGerman.UseVisualStyleBackColor = false;
+            this.btnGerman.Click += new System.EventHandler(this.btnGerman_Click);
             // 
             // btnSpanish
             // 
@@ -486,6 +496,7 @@
             this.btnSpanish.TabIndex = 25;
             this.btnSpanish.Text = "SPANISH";
             this.btnSpanish.UseVisualStyleBackColor = false;
+            this.btnSpanish.Click += new System.EventHandler(this.btnSpanish_Click);
             // 
             // btnFrench
             // 
@@ -498,6 +509,7 @@
             this.btnFrench.TabIndex = 26;
             this.btnFrench.Text = "FRENCH";
             this.btnFrench.UseVisualStyleBackColor = false;
+            this.btnFrench.Click += new System.EventHandler(this.btnFrench_Click);
             // 
             // btnSwedish
             // 
@@ -510,6 +522,7 @@
             this.btnSwedish.TabIndex = 27;
             this.btnSwedish.Text = "SWEDISH";
             this.btnSwedish.UseVisualStyleBackColor = false;
+            this.btnSwedish.Click += new System.EventHandler(this.btnSwedish_Click);
             // 
             // btnItaly
             // 
@@ -522,6 +535,7 @@
             this.btnItaly.TabIndex = 28;
             this.btnItaly.Text = "ITALY";
             this.btnItaly.UseVisualStyleBackColor = false;
+            this.btnItaly.Click += new System.EventHandler(this.btnItaly_Click);
             // 
             // textBoxNumber
             // 
@@ -574,6 +588,13 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Europe level";
+            // 
+            // textBoxNumber1
+            // 
+            this.textBoxNumber1.Location = new System.Drawing.Point(569, 31);
+            this.textBoxNumber1.Name = "textBoxNumber1";
+            this.textBoxNumber1.Size = new System.Drawing.Size(206, 20);
+            this.textBoxNumber1.TabIndex = 44;
             // 
             // listBoxResults1
             // 
@@ -770,7 +791,7 @@
             this.btnLiter.BackColor = System.Drawing.Color.AntiqueWhite;
             this.btnLiter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLiter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLiter.Location = new System.Drawing.Point(126, 71);
+            this.btnLiter.Location = new System.Drawing.Point(9, 71);
             this.btnLiter.Name = "btnLiter";
             this.btnLiter.Size = new System.Drawing.Size(103, 23);
             this.btnLiter.TabIndex = 1;
@@ -783,7 +804,7 @@
             this.btnMGP.BackColor = System.Drawing.Color.AntiqueWhite;
             this.btnMGP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMGP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMGP.Location = new System.Drawing.Point(6, 71);
+            this.btnMGP.Location = new System.Drawing.Point(115, 71);
             this.btnMGP.Name = "btnMGP";
             this.btnMGP.Size = new System.Drawing.Size(114, 23);
             this.btnMGP.TabIndex = 0;
@@ -811,13 +832,7 @@
             this.btnReset2.TabIndex = 38;
             this.btnReset2.Text = "Reset";
             this.btnReset2.UseVisualStyleBackColor = false;
-            // 
-            // textBoxNumber1
-            // 
-            this.textBoxNumber1.Location = new System.Drawing.Point(569, 31);
-            this.textBoxNumber1.Name = "textBoxNumber1";
-            this.textBoxNumber1.Size = new System.Drawing.Size(206, 20);
-            this.textBoxNumber1.TabIndex = 44;
+            this.btnReset2.Click += new System.EventHandler(this.btnReset2_Click);
             // 
             // USAvsHUNvsROvsRUvsEUROvsTÜRKISvsGÖRÖG
             // 

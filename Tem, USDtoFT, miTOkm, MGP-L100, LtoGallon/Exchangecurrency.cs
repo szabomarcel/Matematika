@@ -24,7 +24,14 @@ namespace Tem__USDtoFT__miTOkm__MGP_L100__LtoGallon
             { "RUB", 92.5 },   // Orosz Rubel -> USD
             { "JPY", 150.3 },  // Japán Jeny -> USD
             { "CNY", 7.2 },    // Kínai Yuan -> USD
-            { "SEK", 10.5 }    // Svéd Korona -> USD
+            { "SEK", 10.5 },    // Svéd Korona -> USD
+            { "GRD", 340.75 },  // (Drachma)
+            { "SKK", 30.126 },  // (Szlovák Korona)
+            { "CSK", 1.09},     //Csehszlovák
+            { "DEM", 1.95583 }, // (Német Márka)
+            { "ESP", 166.386 }, // (Spanyol Peseta)
+            { "FRF", 6.55957 }, // (Francia Frank)
+            { "ITL", 1936.27 }  // (Olasz Líra)
         };
 
         // Tiltott kulcsszavak (pl. $ vagy egyéb szöveges jelek)
@@ -319,6 +326,785 @@ namespace Tem__USDtoFT__miTOkm__MGP_L100__LtoGallon
             {
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
+        }
+
+        private void btnRo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "RON")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["RON"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} LEI");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnHuf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "HUF")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["HUF"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} FT");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnTürkey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "TRY")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["TRY"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} TRY");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnGreek_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "GRD")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["GRD"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} GRD");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnRus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "RUB")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["RUB"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} RUB");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnJapan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "JPY")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["JPY"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} JPY");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnChina_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "CNY")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["CNY"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} CNY");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnSlovak_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "SKK")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["SKK"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} SKK");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnCzech_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "CSK")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["CSK"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} CSK");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnGerman_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "DEM")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["DEM"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} DEM");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnSpanish_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "ESP")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["ESP"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} ESP");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnFrench_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "FRF")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["FRF"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} FRF");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnSwedish_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "SEK")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["SEK"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} SEK");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnItaly_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ellenőrzés: üres mezők ne legyenek
+                if (string.IsNullOrWhiteSpace(textBoxNumber.Text) || string.IsNullOrWhiteSpace(textBoxNumber1.Text))
+                {
+                    MessageBox.Show("Minden mezőt ki kell tölteni!");
+                    return;
+                }
+
+                // Próbáljuk meg konvertálni a számot
+                if (!double.TryParse(textBoxNumber.Text, out double amount))
+                {
+                    MessageBox.Show("Kérlek, számot adj meg az összeg mezőben!");
+                    return;
+                }
+
+                // Ha az új összeg különbözik az előzőtől, töröljük az előző eredményt
+                if (amount != lastAmount)
+                {
+                    listBoxResults.Items.Clear(); // Csak akkor töröljük, ha az új összeg eltér az előzőtől
+                }
+
+                // Pénznem beolvasása
+                string fromCurrency = textBoxNumber1.Text.Trim().ToUpper();
+
+                // Ellenőrizzük, hogy a pénznem létezik-e az árfolyamok között
+                if (!exchangeRates.ContainsKey(fromCurrency))
+                {
+                    MessageBox.Show("A kiválasztott pénznem nem támogatott.");
+                    return;
+                }
+
+                // Ha már EUR az eredeti pénznem, akkor nem kell átváltani
+                if (fromCurrency == "ITL")
+                {
+                    return;
+                }
+
+                // RON-ra váltás (USD közvetítés nélkül) vagy más pénznemek esetén
+                double fromRate = exchangeRates[fromCurrency];
+                double eurRate = exchangeRates["ITL"];
+                double convertedAmount = (amount / fromRate) * eurRate;
+
+                // Eredmény kiírása
+                listBoxResults.Items.Add($"{amount} {fromCurrency} = {convertedAmount:F2} ITL");
+                lastAmount = amount; // Frissítjük az utolsó összeg értékét
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void btnReset2_Click(object sender, EventArgs e)
+        {
+            textBoxNumber.Text = "";
+            textBoxNumber1.Text = "";
+            listBoxResults.Text = "";
+            listBoxResults1.Text = "";
+            textBoxNumber.Focus();
         }
     }
 }
